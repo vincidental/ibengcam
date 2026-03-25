@@ -14,7 +14,7 @@ const BRANDS = [
 export default function PartnerLogos() {
   return (
     <section className="py-6 bg-white border-y border-border overflow-hidden">
-      <div className="flex" style={{ animation: "marquee-scroll 28s linear infinite" }}>
+      <div className="marquee-track flex">
         {/* First copy */}
         {BRANDS.map(({ name, src }, i) => (
           <div key={`a-${i}`} className="flex items-center justify-center mx-10 lg:mx-14 flex-shrink-0">
@@ -33,6 +33,14 @@ export default function PartnerLogos() {
         @keyframes marquee-scroll {
           0%   { transform: translateX(0); }
           100% { transform: translateX(-50%); }
+        }
+        .marquee-track {
+          animation: marquee-scroll 28s linear infinite;
+        }
+        @media (max-width: 768px) {
+          .marquee-track {
+            animation: marquee-scroll 14s linear infinite;
+          }
         }
       `}</style>
     </section>
