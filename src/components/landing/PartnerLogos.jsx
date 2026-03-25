@@ -1,28 +1,31 @@
 import React from "react";
-import Navbar from "../components/landing/Navbar";
-import HeroSection from "../components/landing/HeroSection";
-import PartnerLogos from "../components/landing/PartnerLogos.jsx";
-import ChatBubbleSection from "../components/landing/ChatBubbleSection";
-import StatsReviews from "../components/landing/StatsReviews";
-import ServicesGrid from "../components/landing/ServicesGrid";
-import AboutUs from "../components/landing/AboutUs";
-import FAQSection from "../components/landing/FAQSection";
-import ContactSection from "../components/landing/ContactSection";
-import Footer from "../components/landing/Footer";
 
-export default function LandingPage() {
+const BRANDS = [
+  { name: "Sony", logo: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg" },
+  { name: "Fujifilm", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Fujifilm_logo.svg" },
+  { name: "Lumix", logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/Panasonic_Lumix_logo.svg" },
+  { name: "Pentax", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Pentax_logo.svg" },
+  { name: "DJI", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a2/DJI_logo.svg" },
+  { name: "Kodak", logo: "https://upload.wikimedia.org/wikipedia/commons/5/52/Kodak_Logo_2006.svg" },
+  { name: "Nikon", logo: "https://upload.wikimedia.org/wikipedia/commons/b/b5/Nikon_Logo.svg" },
+  { name: "Canon", logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/Canon_logo.svg" },
+];
+
+export default function PartnerLogos() {
   return (
-    <div className="min-h-screen bg-background font-jakarta">
-      <Navbar />
-      <HeroSection />
-      <PartnerLogos />
-      <ChatBubbleSection />
-      <StatsReviews />
-      <ServicesGrid />
-      <AboutUs />
-      <FAQSection />
-      <ContactSection />
-      <Footer />
-    </div>
+    <section className="py-8 bg-white border-y border-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-wrap justify-center items-center gap-8 lg:gap-14">
+          {BRANDS.map((brand, i) => (
+            <img
+              key={i}
+              src={brand.logo}
+              alt={brand.name}
+              className="h-6 lg:h-8 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity"
+            />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
