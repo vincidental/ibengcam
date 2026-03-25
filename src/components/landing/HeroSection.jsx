@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import { MessageSquare } from "lucide-react";
 
-const HERO_IMAGES = [
-  "https://media.base44.com/images/public/user_69648a8e883c6e471326f5ca/14153ef50_6f3a83b66c45e38193b59ad652fe478309b5ed7e.jpg",
-  "https://media.base44.com/images/public/user_69648a8e883c6e471326f5ca/7c4630f8f_d860328600579f8f56f8907cb86483682759406e.jpg",
-  "https://media.base44.com/images/public/user_69648a8e883c6e471326f5ca/0d325cc73_c657f72c3acec2eb14b49297f0d0b378ac6ec5e6.jpg",
-];
+const MAIN_IMAGE = "https://media.base44.com/images/public/user_69648a8e883c6e471326f5ca/14153ef50_6f3a83b66c45e38193b59ad652fe478309b5ed7e.jpg";
+const OVERLAY_IMAGE = "https://media.base44.com/images/public/user_69648a8e883c6e471326f5ca/7c4630f8f_d860328600579f8f56f8907cb86483682759406e.jpg";
 
 const BADGES = [
   "Pengecekan & Konsultasi GRATIS",
@@ -16,26 +13,11 @@ const BADGES = [
 ];
 
 export default function HeroSection() {
-  const [activeSlide, setActiveSlide] = useState(0);
-  const [prevSlide, setPrevSlide] = useState(null);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPrevSlide(activeSlide);
-      setActiveSlide((prev) => (prev + 1) % HERO_IMAGES.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, [activeSlide]);
-
-  const handleDotClick = (i) => {
-    setPrevSlide(activeSlide);
-    setActiveSlide(i);
-  };
-
   return (
     <section id="home" className="pt-20 lg:pt-24 pb-8 lg:pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+          {/* Left: Text content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -81,58 +63,44 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
+          {/* Right: Overlapping images */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
+            className="relative h-[360px] lg:h-[440px]"
           >
-            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-secondary">
-              {/* Blurred background layer — always shows current (incoming) image blurred */}
-              <AnimatePresence>
-                <motion.div
-                  key={`bg-${activeSlide}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.6 }}
-                  className="absolute inset-0"
-                >
-                  <img
-                    src={HERO_IMAGES[activeSlide]}
-                    alt=""
-                    className="w-full h-full object-cover scale-110"
-                    style={{ filter: "blur(16px)" }}
-                  />
-                </motion.div>
-              </AnimatePresence>
+            {/* Back image — peeking top-left */}
+            <motion.div
+              initial={{ opacity: 0, x: -20, y: -10 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.35 }}
+              className="absolute top-0 left-0 w-[62%] h-[58%] rounded-2xl overflow-hidden shadow-lg z-0"
+            >
+              <img
+                src={OVERLAY_IMAGE}
+                alt="Lens cleaning service"
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
 
-              {/* Sharp foreground image */}
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={`img-${activeSlide}`}
-                  src={HERO_IMAGES[activeSlide]}
-                  alt={`Ibengcam service ${activeSlide + 1}`}
-                  initial={{ opacity: 0, scale: 1.04 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.97 }}
-                  transition={{ duration: 0.7 }}
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-              </AnimatePresence>
-            </div>
+            {/* Main large image — bottom-right, on top */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="absolute bottom-0 right-0 w-[78%] h-[78%] rounded-2xl overflow-hidden shadow-2xl z-10"
+            >
+              <img
+                src={MAIN_IMAGE}
+                alt="Camera repair hands"
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
 
-            <div className="flex justify-center gap-2 mt-4">
-              {HERO_IMAGES.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => handleDotClick(i)}
-                  className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                    i === activeSlide ? "bg-primary" : "bg-foreground/20"
-                  }`}
-                />
-              ))}
-            </div>
+            {/* Decorative accent */}
+            <div className="absolute top-6 right-6 w-20 h-20 rounded-full bg-accent/15 -z-10" />
+            <div className="absolute bottom-6 left-2 w-10 h-10 rounded-full bg-primary/10 -z-10" />
           </motion.div>
         </div>
       </div>

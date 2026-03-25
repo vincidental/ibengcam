@@ -1,41 +1,49 @@
 import React from "react";
 
+// Using Brandfetch/CDN-hosted colored SVG logos
 const BRANDS = [
-  {
-    name: "Sony",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg",
-  },
   {
     name: "Canon",
     logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/Canon_logo.svg",
+    style: { filter: "none" },
+  },
+  {
+    name: "Sony",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg",
+    style: { filter: "none" },
   },
   {
     name: "Nikon",
     logo: "https://upload.wikimedia.org/wikipedia/commons/b/b5/Nikon_Logo.svg",
+    style: { filter: "none" },
   },
   {
     name: "Fujifilm",
     logo: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Fujifilm_logo.svg",
-  },
-  {
-    name: "DJI",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/0/09/DJI_Logo_White.svg",
-  },
-  {
-    name: "Lumix",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/Panasonic_Lumix_logo.svg",
-  },
-  {
-    name: "Olympus",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/1/1f/Olympus_Corporation_logo.svg",
+    style: { filter: "none" },
   },
   {
     name: "Leica",
     logo: "https://upload.wikimedia.org/wikipedia/commons/a/a6/Leica_Camera_logo.svg",
+    style: { filter: "none" },
+  },
+  {
+    name: "DJI",
+    logo: "https://cdn.worldvectorlogo.com/logos/dji-1.svg",
+    style: { filter: "none" },
+  },
+  {
+    name: "Pentax",
+    logo: "https://cdn.worldvectorlogo.com/logos/pentax.svg",
+    style: { filter: "none" },
+  },
+  {
+    name: "Kodak",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/Eastman_Kodak_logo.svg",
+    style: { filter: "none" },
   },
 ];
 
-// Duplicate for seamless marquee
 const ALL_BRANDS = [...BRANDS, ...BRANDS];
 
 export default function PartnerLogos() {
@@ -52,8 +60,18 @@ export default function PartnerLogos() {
                 src={brand.logo}
                 alt={brand.name}
                 className="h-7 lg:h-9 w-auto object-contain"
-                style={{ filter: "none" }}
+                style={brand.style}
+                onError={(e) => {
+                  e.target.style.display = "none";
+                  e.target.nextSibling.style.display = "block";
+                }}
               />
+              <span
+                style={{ display: "none" }}
+                className="text-sm font-bold text-foreground/50"
+              >
+                {brand.name}
+              </span>
             </div>
           ))}
         </div>

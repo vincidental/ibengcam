@@ -1,6 +1,6 @@
 import React from "react";
 
-const LOGO_WHITE = "https://media.base44.com/images/public/69c429ffa350c71452f71e34/67a5302e2_LogoIbeng-Cam-02.png";
+const LOGO_WHITE = "https://media.base44.com/images/public/69c429ffa350c71452f71e34/b2be8b865_LogoIbeng-Cam-02.png";
 
 const QUICK_LINKS = [
   { label: "Home", href: "#home" },

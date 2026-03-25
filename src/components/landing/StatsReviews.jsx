@@ -13,16 +13,19 @@ const REVIEWS = [
     name: "Feivel Riodan",
     rating: 5,
     text: "Fast service, competitive price. Friendly admin and transparent during all the process. Great experience.",
+    avatar: "https://media.base44.com/images/public/69c429ffa350c71452f71e34/99da15859_731c5d2fd9ff59785cac984bff10f06593161872.png",
   },
   {
     name: "Y.F Nugroho",
     rating: 5,
     text: "Excellent. Excellent service. Cleaned the lens fungus. It was done in less than an hour. They also cleaned the shutter speed on my EOS 1300D.",
+    avatar: "https://media.base44.com/images/public/69c429ffa350c71452f71e34/ad31eb887_eca028858b71a6e9f254650e91a82990059b4a82.png",
   },
   {
     name: "Muhammad Zaki",
     rating: 5,
     text: "Got my camera sensor fungus cleaned here. Great service, and I got a discount for walk-ins. The place is also comfortable, with coffee and a waiting room. Highly recommended.",
+    avatar: "https://media.base44.com/images/public/69c429ffa350c71452f71e34/f7ea1450b_6c8e00879914b5234df0fd413203209edf2b28bb.png",
   },
 ];
 
@@ -72,10 +75,12 @@ export default function StatsReviews() {
               className="bg-secondary/50 rounded-xl p-6 border border-border"
             >
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <span className="text-sm font-bold text-primary">
-                    {review.name[0]}
-                  </span>
+                <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 border-2 border-primary/20">
+                  <img
+                    src={review.avatar}
+                    alt={review.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div>
                   <div className="text-sm font-semibold">{review.name}</div>
