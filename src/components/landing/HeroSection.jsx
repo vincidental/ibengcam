@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare } from "lucide-react";
 
 const HERO_IMAGES = [
@@ -17,13 +17,20 @@ const BADGES = [
 
 export default function HeroSection() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [prevSlide, setPrevSlide] = useState(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
+      setPrevSlide(activeSlide);
       setActiveSlide((prev) => (prev + 1) % HERO_IMAGES.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [activeSlide]);
+
+  const handleDotClick = (i) => {
+    setPrevSlide(activeSlide);
+    setActiveSlide(i);
+  };
 
   return (
     <section id="home" className="pt-20 lg:pt-24 pb-8 lg:pb-16">
@@ -81,22 +88,45 @@ export default function HeroSection() {
             className="relative"
           >
             <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-secondary">
-              {HERO_IMAGES.map((img, i) => (
-                <img
-                  key={i}
-                  src={img}
-                  alt={`Ibengcam service ${i + 1}`}
-                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
-                    i === activeSlide ? "opacity-100" : "opacity-0"
-                  }`}
+              {/* Blurred background layer — always shows current (incoming) image blurred */}
+              <AnimatePresence>
+                <motion.div
+                  key={`bg-${activeSlide}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="absolute inset-0"
+                >
+                  <img
+                    src={HERO_IMAGES[activeSlide]}
+                    alt=""
+                    className="w-full h-full object-cover scale-110"
+                    style={{ filter: "blur(16px)" }}
+                  />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Sharp foreground image */}
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={`img-${activeSlide}`}
+                  src={HERO_IMAGES[activeSlide]}
+                  alt={`Ibengcam service ${activeSlide + 1}`}
+                  initial={{ opacity: 0, scale: 1.04 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.97 }}
+                  transition={{ duration: 0.7 }}
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
-              ))}
+              </AnimatePresence>
             </div>
+
             <div className="flex justify-center gap-2 mt-4">
               {HERO_IMAGES.map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => setActiveSlide(i)}
+                  onClick={() => handleDotClick(i)}
                   className={`w-2.5 h-2.5 rounded-full transition-colors ${
                     i === activeSlide ? "bg-primary" : "bg-foreground/20"
                   }`}

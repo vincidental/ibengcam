@@ -1,35 +1,60 @@
 import React from "react";
 
 const BRANDS = [
-  "Kodak", "Nikon", "Canon", "Leica", "SONY", "FUJIFILM", 
-  "LUMIX", "PENTAX", "DJI", "Kodak", "Nikon", "Canon", 
-  "Leica", "SONY", "FUJIFILM", "LUMIX", "PENTAX", "DJI"
+  {
+    name: "Sony",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg",
+  },
+  {
+    name: "Canon",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/Canon_logo.svg",
+  },
+  {
+    name: "Nikon",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/b/b5/Nikon_Logo.svg",
+  },
+  {
+    name: "Fujifilm",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Fujifilm_logo.svg",
+  },
+  {
+    name: "DJI",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/0/09/DJI_Logo_White.svg",
+  },
+  {
+    name: "Lumix",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/Panasonic_Lumix_logo.svg",
+  },
+  {
+    name: "Olympus",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/1/1f/Olympus_Corporation_logo.svg",
+  },
+  {
+    name: "Leica",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a6/Leica_Camera_logo.svg",
+  },
 ];
 
-const BRAND_FONTS = {
-  "Kodak": "font-extrabold tracking-tight",
-  "Nikon": "font-extrabold italic",
-  "Canon": "font-extrabold",
-  "Leica": "font-bold italic",
-  "SONY": "font-extrabold tracking-widest",
-  "FUJIFILM": "font-extrabold tracking-wide",
-  "LUMIX": "font-bold tracking-widest",
-  "PENTAX": "font-extrabold tracking-wider",
-  "DJI": "font-bold italic",
-};
+// Duplicate for seamless marquee
+const ALL_BRANDS = [...BRANDS, ...BRANDS];
 
 export default function PartnerLogos() {
   return (
     <section className="py-6 bg-white border-y border-border overflow-hidden">
       <div className="relative">
-        <div className="flex animate-marquee whitespace-nowrap">
-          {BRANDS.map((brand, i) => (
-            <span
+        <div className="flex animate-marquee whitespace-nowrap items-center">
+          {ALL_BRANDS.map((brand, i) => (
+            <div
               key={i}
-              className={`inline-block mx-8 lg:mx-12 text-lg lg:text-xl text-foreground/50 ${BRAND_FONTS[brand] || "font-bold"}`}
+              className="inline-flex items-center justify-center mx-10 lg:mx-14 flex-shrink-0"
             >
-              {brand}
-            </span>
+              <img
+                src={brand.logo}
+                alt={brand.name}
+                className="h-7 lg:h-9 w-auto object-contain"
+                style={{ filter: "none" }}
+              />
+            </div>
           ))}
         </div>
       </div>

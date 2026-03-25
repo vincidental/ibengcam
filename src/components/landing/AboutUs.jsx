@@ -10,35 +10,63 @@ const IMAGES = {
 
 export default function AboutUs() {
   return (
-    <section id="tentang" className="py-12 lg:py-20 bg-white">
+    <section id="tentang" className="py-12 lg:py-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          {/* Creative scattered image layout */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="grid grid-cols-2 gap-3"
+            className="relative h-[420px] lg:h-[500px]"
           >
-            <img
+            {/* Large main image — top left, slightly tilted */}
+            <motion.img
               src={IMAGES.topLeft}
               alt="Tim Ibengcam"
-              className="rounded-xl w-full h-40 lg:h-48 object-cover"
+              initial={{ opacity: 0, rotate: -3, y: 20 }}
+              whileInView={{ opacity: 1, rotate: -3, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="absolute top-0 left-0 w-[55%] h-48 lg:h-56 object-cover rounded-2xl shadow-lg"
             />
-            <img
+
+            {/* Top right — tilted right */}
+            <motion.img
               src={IMAGES.topRight}
-              alt="Workshop Ibengcam"
-              className="rounded-xl w-full h-40 lg:h-48 object-cover"
+              alt="Workshop"
+              initial={{ opacity: 0, rotate: 3, y: 20 }}
+              whileInView={{ opacity: 1, rotate: 3, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="absolute top-4 right-0 w-[42%] h-40 lg:h-48 object-cover rounded-2xl shadow-lg"
             />
-            <img
+
+            {/* Center wide — overlapping slightly */}
+            <motion.img
               src={IMAGES.center}
               alt="Proses service"
-              className="rounded-xl w-full h-40 lg:h-48 object-cover col-span-2"
+              initial={{ opacity: 0, rotate: 1, y: 20 }}
+              whileInView={{ opacity: 1, rotate: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="absolute top-[44%] left-[8%] w-[60%] h-44 lg:h-52 object-cover rounded-2xl shadow-xl z-10"
             />
-            <img
+
+            {/* Bottom right — tilted left */}
+            <motion.img
               src={IMAGES.bottomLeft}
               alt="Signage Ibengcam"
-              className="rounded-xl w-full h-40 lg:h-48 object-cover col-span-2"
+              initial={{ opacity: 0, rotate: -2, y: 20 }}
+              whileInView={{ opacity: 1, rotate: -2, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="absolute bottom-0 right-0 w-[45%] h-36 lg:h-44 object-cover rounded-2xl shadow-lg"
             />
+
+            {/* Decorative accent dot */}
+            <div className="absolute bottom-6 left-0 w-16 h-16 rounded-full bg-accent/20 -z-10" />
+            <div className="absolute top-8 right-8 w-8 h-8 rounded-full bg-primary/10 -z-10" />
           </motion.div>
 
           <motion.div
