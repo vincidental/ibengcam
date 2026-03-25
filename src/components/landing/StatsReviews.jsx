@@ -13,13 +13,13 @@ const REVIEWS = [
     name: "Feivel Riodan",
     rating: 5,
     text: "Fast service, competitive price. Friendly admin and transparent during all the process. Great experience.",
-    avatar: "https://media.base44.com/images/public/69c429ffa350c71452f71e34/99da15859_731c5d2fd9ff59785cac984bff10f06593161872.png",
+    avatar: "https://media.base44.com/images/public/69c429ffa350c71452f71e34/ad31eb887_eca028858b71a6e9f254650e91a82990059b4a82.png",
   },
   {
     name: "Y.F Nugroho",
     rating: 5,
     text: "Excellent. Excellent service. Cleaned the lens fungus. It was done in less than an hour. They also cleaned the shutter speed on my EOS 1300D.",
-    avatar: "https://media.base44.com/images/public/69c429ffa350c71452f71e34/ad31eb887_eca028858b71a6e9f254650e91a82990059b4a82.png",
+    avatar: "https://media.base44.com/images/public/69c429ffa350c71452f71e34/99da15859_731c5d2fd9ff59785cac984bff10f06593161872.png",
   },
   {
     name: "Muhammad Zaki",
