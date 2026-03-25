@@ -17,22 +17,25 @@ const BADGES = [
 
 export default function HeroSection() {
   const [activeSlide, setActiveSlide] = useState(0);
+  const [prevSlide, setPrevSlide] = useState(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
+      setPrevSlide(activeSlide);
       setActiveSlide((prev) => (prev + 1) % HERO_IMAGES.length);
-    }, 4500);
+    }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [activeSlide]);
 
-  const nextSlide = (activeSlide + 1) % HERO_IMAGES.length;
+  const handleDotClick = (i) => {
+    setPrevSlide(activeSlide);
+    setActiveSlide(i);
+  };
 
   return (
-    <section id="home" className="pt-20 lg:pt-24 pb-8 lg:pb-16 overflow-hidden">
+    <section id="home" className="pt-20 lg:pt-24 pb-8 lg:pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-
-          {/* Left Text Content */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -78,56 +81,59 @@ export default function HeroSection() {
             </div>
           </motion.div>
 
-          {/* Right Image Composition */}
-          <div className="relative h-[350px] sm:h-[450px] lg:h-[520px] w-full mt-8 lg:mt-0">
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="relative"
+          >
+            <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-secondary">
+              {/* Blurred background layer */}
+              <AnimatePresence>
+                <motion.div
+                  key={`bg-${activeSlide}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="absolute inset-0"
+                >
+                  <img
+                    src={HERO_IMAGES[activeSlide]}
+                    alt=""
+                    className="w-full h-full object-cover scale-110"
+                    style={{ filter: "blur(16px)" }}
+                  />
+                </motion.div>
+              </AnimatePresence>
 
-            {/* Back layer: next image, blurred */}
-            <AnimatePresence mode="popLayout">
-              <motion.img
-                key={`back-${nextSlide}`}
-                src={HERO_IMAGES[nextSlide]}
-                alt="Next slide preview"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.45 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 1 }}
-                className="absolute top-0 left-0 w-[68%] h-[72%] object-cover rounded-3xl shadow-lg z-10"
-                style={{ filter: "blur(5px)" }}
-              />
-            </AnimatePresence>
+              {/* Sharp foreground image */}
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={`img-${activeSlide}`}
+                  src={HERO_IMAGES[activeSlide]}
+                  alt={`Ibengcam service ${activeSlide + 1}`}
+                  initial={{ opacity: 0, scale: 1.04 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.97 }}
+                  transition={{ duration: 0.7 }}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </AnimatePresence>
+            </div>
 
-            {/* Front layer: current image, sharp */}
-            <AnimatePresence mode="popLayout">
-              <motion.img
-                key={`front-${activeSlide}`}
-                src={HERO_IMAGES[activeSlide]}
-                alt="Camera repair service"
-                initial={{ opacity: 0, scale: 0.82, x: -36, y: -36 }}
-                animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-                exit={{ opacity: 0, scale: 1.04, x: 18, y: 18 }}
-                transition={{ duration: 0.85, ease: "easeInOut" }}
-                className="absolute bottom-0 right-0 w-[76%] h-[76%] object-cover rounded-3xl shadow-2xl border-4 border-white z-20"
-              />
-            </AnimatePresence>
-
-            {/* Dot indicators */}
-            <div className="absolute bottom-[-28px] right-0 flex gap-2 z-30">
+            <div className="flex justify-center gap-2 mt-4">
               {HERO_IMAGES.map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => setActiveSlide(i)}
-                  className={`w-2 h-2 rounded-full transition-colors ${
+                  onClick={() => handleDotClick(i)}
+                  className={`w-2.5 h-2.5 rounded-full transition-colors ${
                     i === activeSlide ? "bg-primary" : "bg-foreground/20"
                   }`}
                 />
               ))}
             </div>
-
-            {/* Decorative accents */}
-            <div className="absolute top-6 right-6 w-16 h-16 rounded-full bg-accent/15 -z-10" />
-            <div className="absolute bottom-16 left-4 w-8 h-8 rounded-full bg-primary/10 -z-10" />
-          </div>
-
+          </motion.div>
         </div>
       </div>
     </section>
