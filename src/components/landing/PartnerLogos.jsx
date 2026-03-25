@@ -1,49 +1,42 @@
 import React from "react";
 
-// Using Brandfetch/CDN-hosted colored SVG logos
+// Reliable CDN sources for colored brand logos
 const BRANDS = [
   {
     name: "Canon",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/0/04/Canon_logo.svg",
-    style: { filter: "none" },
+    logo: "https://www.logo.wine/a/logo/Canon_(company)/Canon_(company)-Logo.wine.svg",
   },
   {
     name: "Sony",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/c/ca/Sony_logo.svg",
-    style: { filter: "none" },
+    logo: "https://www.logo.wine/a/logo/Sony/Sony-Logo.wine.svg",
   },
   {
     name: "Nikon",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/b/b5/Nikon_Logo.svg",
-    style: { filter: "none" },
+    logo: "https://www.logo.wine/a/logo/Nikon/Nikon-Logo.wine.svg",
   },
   {
     name: "Fujifilm",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Fujifilm_logo.svg",
-    style: { filter: "none" },
-  },
-  {
-    name: "Leica",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a6/Leica_Camera_logo.svg",
-    style: { filter: "none" },
+    logo: "https://www.logo.wine/a/logo/Fujifilm/Fujifilm-Logo.wine.svg",
   },
   {
     name: "DJI",
-    logo: "https://cdn.worldvectorlogo.com/logos/dji-1.svg",
-    style: { filter: "none" },
+    logo: "https://upload.wikimedia.org/wikipedia/commons/d/d5/DJI_Logo.svg",
   },
   {
-    name: "Pentax",
-    logo: "https://cdn.worldvectorlogo.com/logos/pentax.svg",
-    style: { filter: "none" },
+    name: "Olympus",
+    logo: "https://www.logo.wine/a/logo/Olympus_Corporation/Olympus_Corporation-Logo.wine.svg",
   },
   {
-    name: "Kodak",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/4/45/Eastman_Kodak_logo.svg",
-    style: { filter: "none" },
+    name: "Panasonic",
+    logo: "https://www.logo.wine/a/logo/Panasonic/Panasonic-Logo.wine.svg",
+  },
+  {
+    name: "Sigma",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Sigma_logo.svg/2560px-Sigma_logo.svg.png",
   },
 ];
 
+// Render brand name as styled text fallback (always visible, no broken images)
 const ALL_BRANDS = [...BRANDS, ...BRANDS];
 
 export default function PartnerLogos() {
@@ -56,20 +49,7 @@ export default function PartnerLogos() {
               key={i}
               className="inline-flex items-center justify-center mx-10 lg:mx-14 flex-shrink-0"
             >
-              <img
-                src={brand.logo}
-                alt={brand.name}
-                className="h-7 lg:h-9 w-auto object-contain"
-                style={brand.style}
-                onError={(e) => {
-                  e.target.style.display = "none";
-                  e.target.nextSibling.style.display = "block";
-                }}
-              />
-              <span
-                style={{ display: "none" }}
-                className="text-sm font-bold text-foreground/50"
-              >
+              <span className="text-base lg:text-lg font-black tracking-tight text-foreground/40 uppercase">
                 {brand.name}
               </span>
             </div>

@@ -29,7 +29,7 @@ const FacebookIcon = () => (
 
 const SOCIAL_LINKS = [
   { label: "TikTok", Icon: TikTokIcon, href: "#", hoverColor: "hover:text-black hover:bg-black/10" },
-  { label: "Instagram", Icon: InstagramIcon, href: "#", hoverColor: "hover:text-pink-500 hover:bg-pink-50" },
+  { label: "Instagram", Icon: InstagramIcon, href: "https://www.instagram.com/ibengcam.id/", hoverColor: "hover:text-pink-500 hover:bg-pink-50" },
   { label: "X", Icon: XIcon, href: "#", hoverColor: "hover:text-black hover:bg-black/10" },
   { label: "Facebook", Icon: FacebookIcon, href: "#", hoverColor: "hover:text-blue-600 hover:bg-blue-50" },
 ];

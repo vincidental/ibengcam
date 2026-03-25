@@ -69,7 +69,15 @@ export default function Navbar() {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setOpen(false)}
+                  onClick={(e) => {
+                    setOpen(false);
+                    const id = link.href.replace("#", "");
+                    setTimeout(() => {
+                      const el = document.getElementById(id);
+                      if (el) el.scrollIntoView({ behavior: "smooth" });
+                    }, 50);
+                    e.preventDefault();
+                  }}
                   className="block text-sm font-medium text-foreground/70 hover:text-primary py-2"
                 >
                   {link.label}
