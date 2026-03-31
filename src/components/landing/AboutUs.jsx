@@ -82,7 +82,7 @@ export default function AboutUs() {
                 IBENGCAM adalah workshop service kamera dan peralatan produksi visual yang melayani fotografer dan videografer di Tangerang Selatan, Bogor, dan sekitarnya. Berdiri sejak tahun 2018, IBENGCAM telah menangani berbagai perbaikan dan perawatan perangkat seperti kamera, lensa, drone, lighting, hingga perangkat pendukung produksi visual lainnya.
               </p>
               <p>
-                Didukung teknisi berpengalaman dan peralatan service modern, setiap proses pengerjaan dilakukan secara transparan dengan standar yang profesional. IBENGCAM juga dipercaya oleh berbagai pengguna, mulai dari fotografer individu hingga pelaku industri kreatif dan rental kamera, untuk menjaga performa perangkat mereka tetap optimal.
+                Didukung teknisi berpengalaman dan peralatan service modern, setiap proses pengerjaan dilakukan secara transparan dengan standar yang profesional. IBENGCAM juga dipercaya oleh berbagai pengguna, mulai dari fotografer individu hingga pelaku industri kreatif dan rental kamera, untuk menjaga performa device mereka tetap optimal.
               </p>
               <p>
                 Dengan layanan diagnosa dan konsultasi gratis, sparepart original, serta pengerjaan yang cepat dan bergaransi, IBENGCAM berkomitmen menjadi solusi terpercaya untuk setiap permasalahan perangkat fotografi dan produksi visual Anda.
