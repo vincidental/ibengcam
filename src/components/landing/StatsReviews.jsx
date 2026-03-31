@@ -3,9 +3,9 @@ import { motion } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 
 const STATS = [
-  { value: "7000+", label: "Client Puas" },
-  { value: "7000+", label: "Alat Kembali Sehat" },
-  { value: "170+", label: "Unit Teratasi Per-Bulan" },
+  { value: "1000+", label: "Client Puas" },
+  { value: "5000+", label: "Alat Kembali Sehat" },
+  { value: "100+", label: "Unit Teratasi Per-Bulan" },
 ];
 
 const REVIEWS = [
