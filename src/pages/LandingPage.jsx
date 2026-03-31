@@ -9,6 +9,7 @@ import AboutUs from "../components/landing/AboutUs";
 import FAQSection from "../components/landing/FAQSection";
 import ContactSection from "../components/landing/ContactSection";
 import Footer from "../components/landing/Footer";
+import WhatsAppStickyButton from "../components/WhatsAppStickyButton";
 
 export default function LandingPage() {
   return (
@@ -23,6 +24,7 @@ export default function LandingPage() {
       <FAQSection />
       <ContactSection />
       <Footer />
+      <WhatsAppStickyButton />
     </div>
   );
 }
