@@ -23,7 +23,7 @@ export default function AboutUs() {
             {/* Large main image — top left, slightly tilted */}
             <motion.img
               src={IMAGES.topLeft}
-              alt="Tim Ibengcam"
+              alt="Tim Ibengcam - bengkel kamera terpercaya di Tangerang sejak 2018"
               initial={{ opacity: 0, rotate: -3, y: 20 }}
               whileInView={{ opacity: 1, rotate: -3, y: 0 }}
               viewport={{ once: true }}
@@ -34,7 +34,7 @@ export default function AboutUs() {
             {/* Top right — tilted right */}
             <motion.img
               src={IMAGES.topRight}
-              alt="Workshop"
+              alt="Workshop Ibengcam - tempat service kamera dan lensa di Tangerang"
               initial={{ opacity: 0, rotate: 3, y: 20 }}
               whileInView={{ opacity: 1, rotate: 3, y: 0 }}
               viewport={{ once: true }}
@@ -45,7 +45,7 @@ export default function AboutUs() {
             {/* Center wide — overlapping slightly */}
             <motion.img
               src={IMAGES.center}
-              alt="Proses service"
+              alt="Proses service dan perbaikan kamera rusak oleh teknisi Ibengcam Tangerang"
               initial={{ opacity: 0, rotate: 1, y: 20 }}
               whileInView={{ opacity: 1, rotate: 1, y: 0 }}
               viewport={{ once: true }}
@@ -56,7 +56,7 @@ export default function AboutUs() {
             {/* Bottom right — tilted left */}
             <motion.img
               src={IMAGES.bottomLeft}
-              alt="Signage Ibengcam"
+              alt="Papan nama bengkel kamera Ibengcam - service kamera drone lensa Tangerang"
               initial={{ opacity: 0, rotate: -2, y: 20 }}
               whileInView={{ opacity: 1, rotate: -2, y: 0 }}
               viewport={{ once: true }}

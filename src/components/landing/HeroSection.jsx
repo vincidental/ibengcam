@@ -3,9 +3,18 @@ import { motion, AnimatePresence } from "framer-motion";
 import { MessageSquare } from "lucide-react";
 
 const HERO_IMAGES = [
-  "https://media.base44.com/images/public/user_69648a8e883c6e471326f5ca/14153ef50_6f3a83b66c45e38193b59ad652fe478309b5ed7e.jpg",
-  "https://media.base44.com/images/public/user_69648a8e883c6e471326f5ca/7c4630f8f_d860328600579f8f56f8907cb86483682759406e.jpg",
-  "https://media.base44.com/images/public/user_69648a8e883c6e471326f5ca/0d325cc73_c657f72c3acec2eb14b49297f0d0b378ac6ec5e6.jpg",
+  {
+    src: "https://media.base44.com/images/public/user_69648a8e883c6e471326f5ca/14153ef50_6f3a83b66c45e38193b59ad652fe478309b5ed7e.jpg",
+    alt: "Service Kamera Tangerang - Ibengcam",
+  },
+  {
+    src: "https://media.base44.com/images/public/user_69648a8e883c6e471326f5ca/7c4630f8f_d860328600579f8f56f8907cb86483682759406e.jpg",
+    alt: "Service Kamera Tangerang - Ibengcam",
+  },
+  {
+    src: "https://media.base44.com/images/public/user_69648a8e883c6e471326f5ca/0d325cc73_c657f72c3acec2eb14b49297f0d0b378ac6ec5e6.jpg",
+    alt: "Service Kamera Tangerang - Ibengcam",
+  },
 ];
 
 const BADGES = [
@@ -99,7 +108,7 @@ export default function HeroSection() {
                   className="absolute inset-0"
                 >
                   <img
-                    src={HERO_IMAGES[activeSlide]}
+                    src={HERO_IMAGES[activeSlide].src}
                     alt=""
                     className="w-full h-full object-cover scale-110"
                     style={{ filter: "blur(16px)" }}
@@ -111,8 +120,8 @@ export default function HeroSection() {
               <AnimatePresence mode="wait">
                 <motion.img
                   key={`img-${activeSlide}`}
-                  src={HERO_IMAGES[activeSlide]}
-                  alt={`Ibengcam service ${activeSlide + 1}`}
+                  src={HERO_IMAGES[activeSlide].src}
+                  alt={HERO_IMAGES[activeSlide].alt}
                   initial={{ opacity: 0, scale: 1.04 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.97 }}
@@ -127,9 +136,8 @@ export default function HeroSection() {
                 <button
                   key={i}
                   onClick={() => handleDotClick(i)}
-                  className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                    i === activeSlide ? "bg-primary" : "bg-foreground/20"
-                  }`}
+                  className={`w-2.5 h-2.5 rounded-full transition-colors ${i === activeSlide ? "bg-primary" : "bg-foreground/20"
+                    }`}
                 />
               ))}
             </div>

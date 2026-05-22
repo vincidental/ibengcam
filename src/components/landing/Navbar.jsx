@@ -20,7 +20,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <a href="#home" className="flex-shrink-0">
-            <img src={LOGO_URL} alt="Ibengcam" className="h-8 lg:h-10 w-auto" />
+            <img src={LOGO_URL} alt="Ibengcam - Service Kamera Tangerang" className="h-8 lg:h-10 w-auto" />
           </a>
 
           <div className="hidden md:flex items-center gap-8">

@@ -59,7 +59,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <img
               src={LOGO_WHITE}
-              alt="Ibengcam"
+              alt="Ibengcam - Service kamera lensa dan drone Tangerang Selatan"
               className="h-10 w-auto mb-4"
             />
             <p className="text-xs text-white/60 leading-relaxed">
