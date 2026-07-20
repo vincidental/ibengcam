@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/landing/Navbar";
 import HeroSection from "../components/landing/HeroSection";
+import ArticleList from "../components/landing/ArticleList";
 import PartnerLogos from "../components/landing/PartnerLogos.jsx";
 import ChatBubbleSection from "../components/landing/ChatBubbleSection";
 import StatsReviews from "../components/landing/StatsReviews";
@@ -21,6 +22,7 @@ export default function LandingPage() {
       <StatsReviews />
       <ServicesGrid />
       <AboutUs />
+      <ArticleList />
       <FAQSection />
       <ContactSection />
       <Footer />

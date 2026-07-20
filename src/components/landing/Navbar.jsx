@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { label: "Home", href: "#home" },
   { label: "Layanan", href: "#layanan" },
   { label: "Tentang", href: "#tentang" },
+  { label: "Artikel", href: "#artikel" },
   { label: "FAQ", href: "#faq" },
   { label: "Kontak", href: "#kontak" },
 ];
@@ -16,19 +17,19 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b bg-white/95 backdrop-blur-md border-border">
+      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <a href="#home" className="flex-shrink-0">
-            <img src={LOGO_URL} alt="Ibengcam - Service Kamera Tangerang" className="h-8 lg:h-10 w-auto" />
+            <img src={LOGO_URL} alt="Ibengcam - Service Kamera Tangerang" className="w-auto h-8 lg:h-10" />
           </a>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="items-center hidden gap-8 md:flex">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors relative group"
+                className="relative text-sm font-medium transition-colors text-foreground/70 hover:text-primary group"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
@@ -49,7 +50,7 @@ export default function Navbar() {
 
           <button
             onClick={() => setOpen(!open)}
-            className="md:hidden p-2 text-foreground"
+            className="p-2 md:hidden text-foreground"
           >
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -62,7 +63,7 @@ export default function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="md:hidden bg-white border-t border-border overflow-hidden"
+            className="overflow-hidden bg-white border-t md:hidden border-border"
           >
             <div className="px-4 py-4 space-y-3">
               {NAV_LINKS.map((link) => (
@@ -78,7 +79,7 @@ export default function Navbar() {
                     }, 50);
                     e.preventDefault();
                   }}
-                  className="block text-sm font-medium text-foreground/70 hover:text-primary py-2"
+                  className="block py-2 text-sm font-medium text-foreground/70 hover:text-primary"
                 >
                   {link.label}
                 </a>
