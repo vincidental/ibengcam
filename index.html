@@ -2,6 +2,19 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      if (
+        window.location.hostname === "ibengcam.id" ||
+        window.location.hostname === "www.ibengcam.id"
+      ) {
+        window.location.replace(
+          "https://ibengcam.com" +
+            window.location.pathname +
+            window.location.search +
+            window.location.hash,
+        );
+      }
+    </script>
     <link rel="icon" type="image/png" href="/favicon-new.png" />
     <link rel="apple-touch-icon" href="/favicon-new.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -209,10 +222,123 @@
         ]
       }
     </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .migration-page {
+        box-sizing: border-box;
+        min-height: 100vh;
+        min-height: 100svh;
+        margin: 0;
+        padding: 40px 24px;
+        display: grid;
+        place-items: center;
+        background: #fff;
+        color: hsl(210, 11%, 15%);
+        font-family: "Plus Jakarta Sans", sans-serif;
+        text-align: center;
+      }
+      body:has(.migration-page) {
+        margin: 0;
+      }
+      .migration-content {
+        width: 100%;
+        max-width: 520px;
+      }
+      .migration-logo {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        height: 48px;
+        margin: 0 auto 40px;
+        object-fit: contain;
+      }
+      .migration-label {
+        display: inline-block;
+        margin: 0 0 20px;
+        padding: 8px 16px;
+        border-radius: 999px;
+        background: hsl(180, 5%, 96%);
+        color: hsl(181, 80%, 24%);
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .migration-title {
+        margin: 0 0 20px;
+        font-size: clamp(30px, 6vw, 44px);
+        font-weight: 800;
+        line-height: 1.2;
+        letter-spacing: -0.035em;
+      }
+      .migration-title span {
+        color: hsl(181, 80%, 24%);
+      }
+      .migration-description {
+        margin: 0 auto 28px;
+        max-width: 420px;
+        color: hsl(210, 5%, 45%);
+        font-size: 15px;
+        line-height: 1.8;
+      }
+      .migration-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 14px 24px;
+        border-radius: 999px;
+        background: hsl(181, 80%, 24%);
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .migration-link:hover {
+        background: hsl(181, 80%, 19%);
+      }
+      .migration-link:focus-visible {
+        outline: 3px solid hsl(36, 90%, 55%);
+        outline-offset: 4px;
+      }
+      .migration-note {
+        margin: 20px 0 0;
+        font-size: 12px;
+        line-height: 1.7;
+        color: hsl(210, 5%, 45%);
+      }
+    </style>
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <main class="migration-page" aria-labelledby="migration-title">
+        <div class="migration-content">
+          <img
+            class="migration-logo"
+            src="https://media.base44.com/images/public/user_69648a8e883c6e471326f5ca/f34f7c927_LogoIbeng-Cam-01.png"
+            alt="IBENGCAM"
+            width="200"
+            height="48"
+          />
+          <p class="migration-label">Alamat website baru</p>
+          <h1 class="migration-title" id="migration-title">
+            Kami pindah ke<br /><span>ibengcam.com</span>
+          </h1>
+          <p class="migration-description">
+            Temukan layanan service kamera, lensa, dan peralatan produksi visual
+            kami di website yang baru.
+          </p>
+          <a class="migration-link" href="https://ibengcam.com">
+            Kunjungi website baru <span aria-hidden="true">&rarr;</span>
+          </a>
+          <p class="migration-note">
+            Jika belum dialihkan, klik tombol di atas untuk melanjutkan.
+          </p>
+        </div>
+      </main>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
