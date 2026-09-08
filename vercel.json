@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "ibengcam.id" }],
+      "destination": "https://ibengcam.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.ibengcam.id" }],
+      "destination": "https://ibengcam.com/:path*",
+      "permanent": true
+    }
+  ]
+}
